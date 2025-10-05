@@ -1,34 +1,14 @@
-@Library('my-shared-library') _
+def buildApp() {
+    echo "Now building the application..."
+    // Mock build logic here
+}
 
-pipeline {
-    agent any
+def deployApp(String branchName) {
+    echo "Now deploying the application on branch: ${branchName}..."
+    // Mock deploy logic here
+}
 
-    stages {
-        stage('Build') {
-            steps {
-                script {
-                    // Call a shared library function
-                    myLibrary.buildApp()
-                }
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                script {
-                    // Use another function from the shared library
-                    myLibrary.deployApp(env.BRANCH_NAME)
-                }
-            }
-        }
-    }
-
-    post {
-        always {
-            script {
-                // Call a cleanup function from the shared library
-                myLibrary.cleanup()
-            }
-        }
-    }
+def cleanup() {
+    echo "Cleaning up after build and deployment..."
+    // Mock cleanup logic here
 }
